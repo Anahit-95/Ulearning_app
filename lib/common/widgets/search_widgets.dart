@@ -8,6 +8,7 @@ import 'package:ulearning_app/common/widgets/image_widgets.dart';
 
 Widget searchBar() {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
         width: 280.w,
@@ -36,6 +37,21 @@ Widget searchBar() {
               ),
             ),
           ],
+        ),
+      ),
+      GestureDetector(
+        onTap: () {},
+        child: Container(
+          padding: EdgeInsets.all(5.w),
+          width: 40.w,
+          height: 40.h,
+          decoration: appBoxShadow(
+              boxBorder: Border.all(
+            color: AppColors.primaryElement,
+          )),
+          child: appImage(
+            iconPath: ImageRes.searchButton,
+          ),
         ),
       ),
     ],
