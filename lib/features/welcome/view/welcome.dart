@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/features/welcome/provider/welcome_notifier.dart';
 import 'package:ulearning_app/features/welcome/view/widgets.dart';
 
@@ -32,29 +33,26 @@ class Welcome extends ConsumerWidget {
                 controller: _controller,
                 scrollDirection: Axis.horizontal,
                 children: [
-                  appOnBoardingPage(
-                    _controller,
-                    context: context,
-                    imagePath: 'assets/images/reading.png',
+                  AppOnBoardingPage(
+                    controller: _controller,
+                    imagePath: ImageRes.reading,
                     title: 'First see Learning',
                     subtitle:
                         'Forget about of paper all knowledge in one learning',
                     index: 1,
                   ),
-                  appOnBoardingPage(
-                    _controller,
-                    context: context,
-                    imagePath: 'assets/images/man.png',
+                  AppOnBoardingPage(
+                    controller: _controller,
+                    imagePath: ImageRes.man,
                     title: 'Connect with Everyone',
                     subtitle:
                         "Always keep in touch with your tutor and friends. "
                         "Let's get connected",
                     index: 2,
                   ),
-                  appOnBoardingPage(
-                    _controller,
-                    context: context,
-                    imagePath: 'assets/images/boy.png',
+                  AppOnBoardingPage(
+                    controller: _controller,
+                    imagePath: ImageRes.boy,
                     title: 'Always Facinated Learning',
                     subtitle:
                         "Alnywhere, anytime. The time is at your discretion. "
@@ -65,7 +63,7 @@ class Welcome extends ConsumerWidget {
               ),
               // for showing dots
               Positioned(
-                bottom: 50,
+                bottom: 50.h,
                 child: DotsIndicator(
                   position: index,
                   dotsCount: 3,

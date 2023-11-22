@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 
 BoxDecoration appBoxShadow({
   Color color = AppColors.primaryElement,
@@ -49,12 +50,42 @@ BoxDecoration appBoxShadowWithRadius({
   );
 }
 
-BoxDecoration appBoxDecorationTextField(
-    {Color color = AppColors.primaryBackground,
-    double radius = 15,
-    Color borderColor = AppColors.primaryFourthElementText}) {
+BoxDecoration appBoxDecorationTextField({
+  Color color = AppColors.primaryBackground,
+  double radius = 15,
+  Color borderColor = AppColors.primaryFourthElementText,
+}) {
   return BoxDecoration(
-      color: color,
-      borderRadius: BorderRadius.circular(radius),
-      border: Border.all(color: borderColor));
+    color: color,
+    borderRadius: BorderRadius.circular(radius),
+    border: Border.all(color: borderColor),
+  );
+}
+
+class AppBoxdecorationImage extends StatelessWidget {
+  final double width;
+  final double height;
+  final String imagePath;
+  const AppBoxdecorationImage(
+      {this.width = 40,
+      this.height = 40,
+      this.imagePath = ImageRes.profile,
+      super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width.w,
+      height: height.h,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            imagePath,
+          ),
+        ),
+        borderRadius: BorderRadius.circular(20.w),
+      ),
+    );
+  }
 }

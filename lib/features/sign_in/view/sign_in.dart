@@ -45,8 +45,8 @@ class _SignInState extends ConsumerState<SignIn> {
                     // top login buttons
                     thirdPartyLogin(),
                     // more login actions message
-                    Center(
-                      child: text14Normal(
+                    const Center(
+                      child: Text14Normal(
                         text: 'Or use your email account to login',
                       ),
                     ),

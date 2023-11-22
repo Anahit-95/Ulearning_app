@@ -33,19 +33,27 @@ Widget text16Normal({
   );
 }
 
-Widget text14Normal({
-  String text = '',
-  Color color = AppColors.primaryThrirdElementText,
-}) {
-  return Text(
-    text,
-    textAlign: TextAlign.start,
-    style: TextStyle(
-      color: color,
-      fontSize: 14.sp,
-      fontWeight: FontWeight.normal,
-    ),
-  );
+class Text14Normal extends StatelessWidget {
+  final String text;
+  final Color color;
+  const Text14Normal({
+    this.text = '',
+    this.color = AppColors.primaryThrirdElementText,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: color,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.normal,
+      ),
+    );
+  }
 }
 
 Widget textUnderline({
