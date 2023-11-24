@@ -46,6 +46,27 @@ class _HomeState extends ConsumerState<Home> {
                 ref: ref,
                 controller: _controller,
               ),
+              const HomeMenuBar(),
+              // CustomScrollView(
+              //   physics: const ScrollPhysics(),
+              //   shrinkWrap: true,
+              //   slivers: [
+              //     SliverPadding(
+              //       padding: const EdgeInsets.all(20),
+              //       sliver: SliverGrid.count(
+              //         crossAxisCount: 2,
+              //         children: [
+              //           Text('Hello I love flutter'),
+              //           Text('Hello I love flutter'),
+              //           Text('Hello I love flutter'),
+              //           Text('Hello I love flutter'),
+              //           Text('Hello I love flutter'),
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              const CourseItemGrid(),
             ],
           ),
         ),
