@@ -95,8 +95,11 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+    // we need to talk to server
+
+    // have local storage
     try {
-      // var navigator = Navigator.of(ref.context);
+      // try to remember user info
       Global.storageService.setString(
           AppConstants.STORAGE_USER_PROFILE_KEY,
           jsonEncode({
@@ -107,9 +110,6 @@ class SignInController {
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '123456');
 
-      // navigator.push(MaterialPageRoute(
-      //   builder: (BuildContext context) => Placeholder(),
-      // ));
       navKey.currentState
           ?.pushNamedAndRemoveUntil('/application', (route) => false);
     } catch (e) {

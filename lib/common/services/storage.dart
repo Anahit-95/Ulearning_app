@@ -20,6 +20,10 @@ class StorageService {
     return _prefs.getString(key) ?? '';
   }
 
+  String getUserToken() {
+    return _prefs.getString(AppConstants.STORAGE_USER_TOKEN_KEY) ?? '';
+  }
+
   Future<bool> setBool(String key, bool value) async {
     return await _prefs.setBool(key, value);
   }
