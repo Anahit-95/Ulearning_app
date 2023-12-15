@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/contsants.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/image_widgets.dart';
@@ -102,7 +103,8 @@ class HelloText extends StatelessWidget {
   }
 }
 
-AppBar homeAppBar() {
+AppBar homeAppBar(WidgetRef ref) {
+  var profileState = ref.watch(homeUserProfileProvider);
   return AppBar(
     title: Container(
       margin: EdgeInsets.only(left: 7.w, right: 7.w),
@@ -114,9 +116,19 @@ AppBar homeAppBar() {
             height: 12.h,
             iconPath: ImageRes.menu,
           ),
-          GestureDetector(
-            child: const AppBoxdecorationImage(),
-          ),
+          profileState.when(
+            data: (value) => GestureDetector(
+              child: AppBoxdecorationImage(
+                imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}",
+              ),
+            ),
+            error: (error, stackTrace) => appImage(
+              width: 18.w,
+              height: 12.h,
+              iconPath: ImageRes.profile,
+            ),
+            loading: () => Container(),
+          )
         ],
       ),
     ),

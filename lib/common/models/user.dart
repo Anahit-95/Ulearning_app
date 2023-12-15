@@ -5,7 +5,7 @@ class LoginRequestEntity {
   String? email;
   String? phone;
   String? avatar;
-  String? openId;
+  String? open_id;
   int? online;
 
   LoginRequestEntity({
@@ -15,9 +15,36 @@ class LoginRequestEntity {
     this.email,
     this.phone,
     this.avatar,
-    this.openId,
+    this.open_id,
     this.online,
   });
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'type': type,
+      'name': name,
+      'description': description,
+      'email': email,
+      'phone': phone,
+      'avatar': avatar,
+      'openId': open_id,
+      'online': online,
+    };
+  }
+
+  factory LoginRequestEntity.fromJson(Map<String, dynamic> map) {
+    return LoginRequestEntity(
+      type: map['type'] != null ? map['type'] as int : null,
+      name: map['name'] != null ? map['name'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      email: map['email'] != null ? map['email'] as String : null,
+      phone: map['phone'] != null ? map['phone'] as String : null,
+      avatar: map['avatar'] != null ? map['avatar'] as String : null,
+      open_id: map['open_id'] != null ? map['open_id'] as String : null,
+      online: map['online'] != null ? map['online'] as int : null,
+    );
+  }
 }
 
 class UserLoginResponseEntity {

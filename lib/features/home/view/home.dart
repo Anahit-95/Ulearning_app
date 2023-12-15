@@ -28,7 +28,7 @@ class _HomeState extends ConsumerState<Home> {
     BuildContext context,
   ) {
     return Scaffold(
-      appBar: homeAppBar(),
+      appBar: homeAppBar(ref),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: SingleChildScrollView(

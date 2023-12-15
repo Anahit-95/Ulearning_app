@@ -24,11 +24,11 @@ class HttpUtil {
 
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        print('app request data ${options.data}');
+        // print('app request data ${options.data}');
         return handler.next(options);
       },
       onResponse: (response, handler) {
-        print('app response data ${response.data}');
+        // print('app response data ${response.data}');
         return handler.next(response);
       },
       onError: (DioException e, handler) {
@@ -102,6 +102,14 @@ ErrorEntity createErrorEntity(DioException error) {
       return ErrorEntity(code: -1, message: "Bad SSL certificates");
     case DioExceptionType.badResponse:
       print('bad response.....');
+      switch (error.response!.statusCode) {
+        case 400:
+          return ErrorEntity(code: 400, message: "request syntax error");
+        case 401:
+          return ErrorEntity(code: 401, message: "permission denied");
+        case 500:
+          return ErrorEntity(code: 500, message: "Server Internal error");
+      }
       return ErrorEntity(code: -1, message: "Server Bad Response");
     case DioExceptionType.cancel:
       return ErrorEntity(code: -1, message: "Server cancled it");
@@ -114,4 +122,18 @@ ErrorEntity createErrorEntity(DioException error) {
 
 void onError(ErrorEntity eInfo) {
   print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
+  switch (eInfo.code) {
+    case 400:
+      print('Server syntax error');
+      break;
+    case 401:
+      print('You are denied to continue');
+      break;
+    case 500:
+      print('Internal server error');
+      break;
+    default:
+      print('Unknown error');
+      break;
+  }
 }
