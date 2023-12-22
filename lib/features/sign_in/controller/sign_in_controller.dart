@@ -108,7 +108,7 @@ class SignInController {
         );
         Global.storageService.setString(
           AppConstants.STORAGE_USER_TOKEN_KEY,
-          result.data!.accessToken!,
+          result.data!.access_token!,
         );
 
         navKey.currentState

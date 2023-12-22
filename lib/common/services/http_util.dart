@@ -110,7 +110,9 @@ ErrorEntity createErrorEntity(DioException error) {
         case 500:
           return ErrorEntity(code: 500, message: "Server Internal error");
       }
-      return ErrorEntity(code: -1, message: "Server Bad Response");
+      return ErrorEntity(
+          code: error.response!.statusCode!, message: "Server Bad Response");
+
     case DioExceptionType.cancel:
       return ErrorEntity(code: -1, message: "Server cancled it");
     case DioExceptionType.connectionError:

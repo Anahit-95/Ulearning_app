@@ -69,7 +69,7 @@ class UserLoginResponseEntity {
 
 // login result
 class UserProfile {
-  String? accessToken;
+  String? access_token;
   String? token;
   String? name;
   String? description;
@@ -78,7 +78,7 @@ class UserProfile {
   int? type;
 
   UserProfile({
-    this.accessToken,
+    this.access_token,
     this.token,
     this.name,
     this.description,
@@ -89,7 +89,7 @@ class UserProfile {
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(
-      accessToken: json['accessToken'],
+      access_token: json['access_token'],
       token: json['token'],
       name: json['name'],
       description: json['description'],
@@ -101,7 +101,7 @@ class UserProfile {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'accessToken': accessToken,
+      'accessToken': access_token,
       'token': token,
       'name': name,
       'description': description,
