@@ -27,7 +27,7 @@ class LoginRequestEntity {
       'email': email,
       'phone': phone,
       'avatar': avatar,
-      'openId': open_id,
+      'open_id': open_id,
       'online': online,
     };
   }
@@ -101,7 +101,7 @@ class UserProfile {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'accessToken': access_token,
+      'access_token': access_token,
       'token': token,
       'name': name,
       'description': description,

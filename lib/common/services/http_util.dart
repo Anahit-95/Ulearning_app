@@ -28,7 +28,7 @@ class HttpUtil {
         return handler.next(options);
       },
       onResponse: (response, handler) {
-        // print('app response data ${response.data}');
+        print('app response data ${response.data}');
         return handler.next(response);
       },
       onError: (DioException e, handler) {
@@ -62,7 +62,6 @@ class HttpUtil {
     if (authorization != null) {
       requestOptions.headers!.addAll(authorization);
     }
-
     var response = await dio.post(
       path,
       data: data,
@@ -94,12 +93,16 @@ ErrorEntity createErrorEntity(DioException error) {
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
       return ErrorEntity(code: -1, message: "Connection timed out");
+
     case DioExceptionType.sendTimeout:
       return ErrorEntity(code: -1, message: "Send timed out");
+
     case DioExceptionType.receiveTimeout:
       return ErrorEntity(code: -1, message: 'Receive timed out');
+
     case DioExceptionType.badCertificate:
       return ErrorEntity(code: -1, message: "Bad SSL certificates");
+
     case DioExceptionType.badResponse:
       print('bad response.....');
       switch (error.response!.statusCode) {
@@ -115,8 +118,10 @@ ErrorEntity createErrorEntity(DioException error) {
 
     case DioExceptionType.cancel:
       return ErrorEntity(code: -1, message: "Server cancled it");
+
     case DioExceptionType.connectionError:
       return ErrorEntity(code: -1, message: "Connection error");
+
     case DioExceptionType.unknown:
       return ErrorEntity(code: -1, message: "Unknown error");
   }

@@ -79,8 +79,6 @@ class SignInController {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         toastInfo("User not found");
-      } else if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
-        toastInfo('Your email or password are wrong');
       } else if (e.code == 'wrong-password') {
         toastInfo('Your password is wrong');
       }
@@ -94,7 +92,7 @@ class SignInController {
     ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 
-  void asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
     // we need to talk to server
     var result = await SignInRepo.login(params: loginRequestEntity);
 
