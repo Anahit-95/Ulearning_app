@@ -23,7 +23,7 @@ final homeScreenBannerDotsProvider =
 );
 
 typedef _$HomeScreenBannerDots = Notifier<int>;
-String _$homeUserProfileHash() => r'7be139d68f3ce7e303021d99eb652efa380e19c0';
+String _$homeUserProfileHash() => r'269c94735a9c7c7a4fbd45c32e752b86da25547b';
 
 /// See also [HomeUserProfile].
 @ProviderFor(HomeUserProfile)
@@ -39,5 +39,21 @@ final homeUserProfileProvider =
 );
 
 typedef _$HomeUserProfile = AutoDisposeAsyncNotifier<UserProfile>;
+String _$homeCourseListHash() => r'dd9041091780f7eff57227345d91a1e526ae53b9';
+
+/// See also [HomeCourseList].
+@ProviderFor(HomeCourseList)
+final homeCourseListProvider = AutoDisposeAsyncNotifierProvider<HomeCourseList,
+    List<CourseItem>?>.internal(
+  HomeCourseList.new,
+  name: r'homeCourseListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeCourseListHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$HomeCourseList = AutoDisposeAsyncNotifier<List<CourseItem>?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

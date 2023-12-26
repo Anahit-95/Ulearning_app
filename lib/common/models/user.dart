@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class LoginRequestEntity {
   int? type;
   String? name;
@@ -30,20 +32,6 @@ class LoginRequestEntity {
       'open_id': open_id,
       'online': online,
     };
-  }
-
-  factory LoginRequestEntity.fromJson(Map<String, dynamic> map) {
-    return LoginRequestEntity(
-      type: map['type'] != null ? map['type'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      description:
-          map['description'] != null ? map['description'] as String : null,
-      email: map['email'] != null ? map['email'] as String : null,
-      phone: map['phone'] != null ? map['phone'] as String : null,
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      open_id: map['open_id'] != null ? map['open_id'] as String : null,
-      online: map['online'] != null ? map['online'] as int : null,
-    );
   }
 }
 
@@ -126,4 +114,28 @@ class UserData {
     required this.description,
     required this.online,
   });
+
+  factory UserData.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return UserData(
+      token: data?['token'],
+      name: data?['name'],
+      avatar: data?['avatar'],
+      description: data?['description'],
+      online: data?['online'],
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (token != null) "token": token,
+      if (name != null) "name": name,
+      if (avatar != null) "avatar": avatar,
+      if (description != null) "description": description,
+      if (online != null) "online": online,
+    };
+  }
 }
